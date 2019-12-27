@@ -1,0 +1,14 @@
+4 5 6
+7 8 0
+0 0 0
+0 0 0
+0 0 0
+0 0 0
+0 0 0
+0 0 0
+0 0 0
+0 0 0
+4 5 6
+
+Here we have done the following transformation
+R10 -> 1*R0 + 1*R10

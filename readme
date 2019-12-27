@@ -1,0 +1,80 @@
+-----------------------------------------------Implementation of Sparse Matrices--------------------------------------------------------------
+
+Part of IISc E0 251 DSA course
+Developed towards the fulfilment of Assignment 1 of the mentioned course
+
+Developed by: Hari Shrawgi
+
+Language: C
+Libraries Used: stdlib, stdio, time
+
+-----------------------------------------------Implementation of Sparse Matrices--------------------------------------------------------------
+
+1. Basic Introduction
+---------------------
+
+All the src code has been written to implement sparse matrices in three formats COO, CSR & CSC. The idea was to implement sparse
+matrices in form of a structure containing three dynamic arrays using pointers. This helps to optimize the space complexity of
+the Implementation.
+
+2. Salient Features
+------------
+
+This implementation of sparse matrix has the following features:
+
+- The code optimizes space requirement as much as possible
+- A sparse matrix is never reconstructed to a dense matrix for any of the operations like, matrix multiplication or row transformation
+- The multiplication algorithm uses dynamic allocation and reallocation for the resultant matrix. This allows the algorithm to be as space
+  efficient as possible. The final matrix is always using only the required amount of space. And intermediate memory usage also never
+  goes beyond twice the actual size.
+- Integer overflow checks while multiplication and addition during matrix multiplication have also been implemented.
+- All the functions are implemented in such a way that the resultant matrices are in memory. The resultant matrices are stored
+  in the struct which is one of the input parameters to the function. And the calling function can access this output after
+  the function call.
+- The implementation of CSR and CSC formats of matrices doesn't require user to specify the no. of cols and rows respectively. This is closer
+  to the theoretical model of CSR and CSC matrices and allows for a general implementation.
+- There are two version of printing functions which print either in sparse formats or dense formats. This helps a lot while debugging.
+- The row transformation operation is performed using elementary row matrices. This allows reuse of the matrix multiplication algorithm.
+- While randomly generating the matrix directly into COO format, the elements are spread randomly across the rows and cols using
+  conversion of random 1-D seq into 2-D seq. This allows the code to be optimum while also ensuring true randomness across rows and cols
+
+
+3. Code description
+-------------------
+
+The src code is divided into three main components:
+
+A. SparseMatrix: This component has the crux of the code, with various functions implemented as per the Assignment.
+                  There are also some helper functions which are used while dealing with sparse matrices.
+                  The description of each function is present in both the header and Implementation files just above the function.
+                  There are some complicated functions which take multiple inputs and also produce an output. The description for
+                  such functions are mentioned in details.
+
+                  This component also defines the three basic structures which have been used to represent the three formats of
+                  sparse matrices. These are the structures that have been used everywhere in the code.
+
+B. Main: This component acts as the client side and has a menu driven approach, which will allow the user to test various parts of
+          the assignment. The code itself is self-explanatory with comments wherever reqd.
+
+C. Utils: This component has a few general purpose functions which have been implemented as per requirement. Example: Sorting function.
+
+
+4. Testing
+----------
+
+The client program is menu-driven and allows one to test various parts of the assignment. Some sample test cases with expected output
+for some, are already present in the "testcases" folder. These testcases can be executed using simple linux redirection.
+
+
+5. Points to be noted
+----------------------
+
+- All the matrices have been implemented as integral matrices. Inputting values other than integers may lead to unexpected results
+- The limit of the implementation is the size of the int. There is an integer overflow checking mechanism inbuilt in the
+  multiplication algorithm.
+- The row transformation parameters are also restricted to integers since the row operation is performed using elementary
+  row matrices, we can't have real-valued parameters.
+- The density parameters in the first part of the assignment are the only inputs that can be real-valued
+
+
+------------------------------------------------------X---------------------------------------------x------------------------------------------

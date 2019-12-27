@@ -1,0 +1,7 @@
+1 10 100 10 1
+
+Her we have done the following transformation
+
+R2-> R0 + R2
+
+Since now R2 becomes all zero, it vanishes from the CSC matrix
